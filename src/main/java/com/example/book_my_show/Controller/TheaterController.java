@@ -1,7 +1,8 @@
 package com.example.Book_my_Show_Application_February.Controller;
 
-import com.example.Book_my_Show_Application_February.EntryDtos.UserEntryDto;
-import com.example.Book_my_Show_Application_February.Services.UserService;
+
+import com.example.Book_my_Show_Application_February.EntryDtos.TheaterEntryDto;
+import com.example.Book_my_Show_Application_February.Services.TheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,24 +12,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/theater")
+public class TheaterController {
 
     @Autowired
-    UserService userService;
+    TheaterService theaterService;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addUser(@RequestBody UserEntryDto userEntryDto){
+    public ResponseEntity addTheater(@RequestBody TheaterEntryDto theaterEntryDto){
 
         try{
-            String response = userService.addUser(userEntryDto);
-            return new ResponseEntity<>(response, HttpStatus.CREATED);
-
+            String result = theaterService.addTheater(theaterEntryDto);
+            return new ResponseEntity(result, HttpStatus.CREATED);
         }catch (Exception e){
-
-            String result = "User could not be added";
-            return new ResponseEntity<>(result,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
+
+
 
     }
 }

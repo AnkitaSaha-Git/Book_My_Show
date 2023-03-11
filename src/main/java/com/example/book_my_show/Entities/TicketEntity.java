@@ -2,12 +2,20 @@ package com.example.book_my_show.Entities;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
 @Table(name="ticket")
+@Data
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class TicketEntity {
 
     @Id
